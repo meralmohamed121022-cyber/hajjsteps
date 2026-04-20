@@ -365,11 +365,7 @@
         <div class="side-box">
           <div class="side-title">تنقّل سريع</div>
           <button class="side-link" type="button" data-jump="step-intro">أركان الحج + الخريطة العامة</button>
-          <button class="side-link" type="button" data-jump="appendix-manhurat">محظورات الإحرام (ملحق)</button>
-          <button class="side-link" type="button" data-jump="appendix-women">حج المرأة (ملحق)</button>
-          <button class="side-link" type="button" data-jump="appendix-checklist">مستلزمات الحاج (ملحق)</button>
-          <button class="side-link" type="button" data-jump="appendix-nums">أرقام مهمة (ملحق)</button>
-          <button class="side-link" type="button" data-jump="appendix-duas">جوامع الدعاء (ملحق)</button>
+        
         </div>
 
         <div class="side-box">
@@ -910,405 +906,1076 @@ function stepsForType(typeKey){
     `
   };
 
-  const appendixManhurat = {
-    id: "appendix-manhurat",
-    badge: "ملحق",
-    title: "محظورات الإحرام (مختصر واضح)",
-    scene: "ihram",
-    html: `
-      <div class="alert-red">
-        <strong>محظورات مشهورة:</strong>
-        قص الشعر، تقليم الأظافر، التطيب بعد عقد الإحرام، الصيد، عقد النكاح، الجماع.
-      </div>
-      <div class="alert-slate mt-3">
-        <strong>تنبيه مهم:</strong>
-        تفاصيل الفدية/الدم تختلف حسب نوع المحظور وحال الشخص؛ التطبيق ممكن نزود له “حاسبة فدية” لاحقاً لو تحب.
-      </div>
-    `
-  };
+  const appendixManhurat = {};
 
-  const appendixWomen = {
-    id: "appendix-women",
-    badge: "ملحق",
-    title: "حج المرأة (نقاط عملية)",
-    scene: "ihram",
-    html: `
-      <div class="alert-green">
-        <strong>نقاط عملية شائعة:</strong>
-        <ul class="mt-2 text-sm text-slate-200" style="line-height:1.9; padding-right:18px; list-style:disc;">
-          <li>يجوز لها لبس المخيط في الإحرام مع تجنب الزينة.</li>
-          <li>لا تلبس النقاب ولا القفازين.</li>
-          <li>لا ترمل في الطواف ولا تسرع بين العلامتين الخضراوين في السعي.</li>
-          <li>لا تحلق؛ وإنما تقصر قدر أنملة.</li>
-          <li>الحيض/النفاس لا يمنع عقد الإحرام، ويمنع الطواف حتى تطهر.</li>
-        </ul>
-      </div>
-      <div class="alert-slate mt-3">
-        <strong>طواف الوداع:</strong> يُذكر في الكتيب أنه لا يلزم الحائض/النفساء.
-      </div>
-    `
-  };
+  const appendixWomen = {};
 
-  const appendixChecklist = {
-    id: "appendix-checklist",
-    badge: "ملحق",
-    title: "مستلزمات الحاج (قائمة عملية)",
-    scene: "ihram",
-    html: `
-      <div class="alert-slate">
-        <strong>أساسيات:</strong> هوية/تصريح، جوال وشاحن متنقل، محفظة صغيرة، قلم وملاحظات.
-      </div>
-      <div class="alert-slate mt-2">
-        <strong>إيمانيات:</strong> مصحف، كتيب أذكار/أدعية (أو ملف على الهاتف)، سجادة صلاة، سواك.
-      </div>
-      <div class="alert-slate mt-2">
-        <strong>شخصي/صحي:</strong> صابون وشامبو غير معطر، مناديل، معقم، كريم مرطب/عازل احتكاك، لاصقات جروح، مسكن ألم، أدوية خاصة بالحاج.
-      </div>
-    `
-  };
+  const appendixChecklist = {};
 
-  const appendixNums = {
-    id: "appendix-nums",
-    badge: "ملحق",
-    title: "أرقام مهمة (كما وردت بالكتيب)",
-    scene: "ihram",
-    html: `
-      <div class="alert-slate">
-        <strong>مناسك (توعية):</strong> 8002488888
-      </div>
-      <div class="alert-slate mt-2">
-        <strong>فتاوى الحجاج:</strong> 8002451000
-      </div>
-      <div class="alert-slate mt-2">
-        <strong>الدوريات الأمنية:</strong> 999 | <strong>الدفاع المدني:</strong> 998 | <strong>الهلال الأحمر:</strong> 997
-      </div>
-    `
-  };
+  const appendixNums = {};
 
-  const appendixDuas = {
-    id: "appendix-duas",
-    badge: "ملحق",
-    title: "جوامع الدعاء (مختصر + خانة إضافة)",
-    scene: "ihram",
-    html: `
-      <div class="alert-green">
-        <strong>فكرة عملية:</strong> مفيش دعاء “إجباري” لكل شوط؛ المهم الإخلاص والدعاء بما تيسر.
-      </div>
-      <div class="alert-slate mt-3">
-        <strong>جوامع قصيرة:</strong>
-        اللهم اغفر لي — اللهم ارحمني — اللهم تقبل — اللهم اهدني — اللهم ارزقني — ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة.
-      </div>
-      <div class="alert-slate mt-3">
-        <strong>أضف دعاءك هنا:</strong>
-        <textarea id="dua-notes" class="form-control mt-2" rows="4" placeholder="اكتب أدعيتك الخاصة هنا..."></textarea>
-      </div>
-      <div class="tiny-note">
-ملحوظة: نصوص الأدعية المطولة في الكتيّب لا يتم نسخها حرفياً داخل الكود، لكن يمكن إضافة “زر استيراد ملف أدعية” لاحقاً.
-      </div>
-    `
-  };
+  const appendixDuas = {};
 
   /* ----------- بناء مسارات الأنواع ----------- */
-  if (typeKey === "tamattu") {
+if (typeKey === "tamattu") {
+if (typeKey === "tamattu") {
     return [
       intro,
       {
-        id:"tmt-1",
-        badge:"التمتع (١)",
-        title:"الإحرام للعمرة من الميقات + التلبية",
-        scene:"ihram",
+        id: "tmt-1",
+        badge: "التمتع (١)",
+        title: "الإحرام للعمرة من الميقات + التلبية",
+        scene: "ihram",
         html: `
-          <div class="alert-green"><strong>النية:</strong> نية العمرة (متمتعاً بها إلى الحج).</div>
-          <div class="alert-slate mt-3"><strong>بعد الإحرام:</strong> الإكثار من التلبية حتى دخول الطواف.</div>
-        `
-      },
-      {
-        id:"tmt-2",
-        badge:"التمتع (٢)",
-        title:"طواف العمرة (٧) + ركعتان + زمزم",
-        scene:"kaaba",
-        html: `
-          <div class="alert-green"><strong>قاعدة الطواف:</strong> الكعبة على اليسار، البداية من الحجر الأسود، ولا يلزم دعاء محدد لكل شوط.</div>
-          ${makeCounterHTML({ key:"tmt_umrah_tawaf", title:"باقي أشواط طواف العمرة", count:7, say:"الله أكبر" })}
-          <div class="alert-slate mt-3"><strong>بعده:</strong> ركعتان إن تيسر ثم شرب زمزم.</div>
-        `
-      },
-      {
-        id:"tmt-3",
-        badge:"التمتع (٣)",
-        title:"سعي العمرة (٧) ثم الحلق/التقصير والتحلل الكامل",
-        scene:"sai",
-        html: `
-          <div class="alert-green"><strong>السعي:</strong> من الصفا إلى المروة شوط، والعودة شوط (المجموع ٧).</div>
-          ${makeCounterHTML({ key:"tmt_umrah_sai", title:"باقي أشواط سعي العمرة", count:7, say:"سبحان الله" })}
-          <div class="alert-green mt-3"><strong>التحلل:</strong> بعد الحلق/التقصير يحل كل شيء.</div>
-        `
-      },
-      {
-        id:"tmt-4",
-        badge:"٨ ذو الحجة",
-        title:"يوم التروية: الإحرام للحج من مكة ثم الخروج إلى منى والصلاة فيها",
-        scene:"mina",
-        html: `
-          <div class="alert-green"><strong>النية:</strong> الإحرام بالحج من مكانك بمكة.</div>
+          <div class="alert-green mb-3">
+            <strong>اقرأ الآن بصوت مسموع لعقد نية العمرة:</strong><br>
+            "لبيك اللهم عُمرة متمتعاً بها إلى الحج.. اللهم إن حبسني حابس فَمَحِلّي حيث حبستني"
+          </div>
           <div class="alert-slate mt-3">
-            <strong>منى:</strong> المبيت بمنى، والصلاة في أوقاتها، وقصر الرباعية.
+            <strong>ابدأ التلبية فوراً وردد طوال الطريق حتى تصل مكة:</strong><br>
+            "لبيك اللهم لبيك، لبيك لا شريك لك لبيك، إن الحمد والنعمة لك والملك، لا شريك لك"
           </div>
         `
       },
       {
-        id:"tmt-5",
-        badge:"٩ ذو الحجة",
-        title:"عرفة: الذهاب صباحاً، صلاة الظهر والعصر جمع تقديم وقصر، دعاء حتى الغروب",
-        scene:"arafat",
+        id: "tmt-2",
+        badge: "التمتع (٢)",
+        title: "طواف العمرة (٧ أشواط)",
+        scene: "kaaba",
         html: `
-          <div class="alert-green"><strong>الركن الأعظم:</strong> الوقوف بعرفة.</div>
-          <div class="alert-slate mt-3"><strong>البرنامج:</strong> ظهر+عصر جمع تقديم وقصر، ثم دعاء وذكر حتى الغروب.</div>
+          <div class="alert-slate mb-3">
+            <strong>عند رؤية الكعبة قل:</strong><br>
+            "اللهم زِدْ هذا البيت تشريفاً وتعظيماً وتكريماً ومهابةً"
+          </div>
+          <div class="alert-green mb-3">
+            <strong>بداية الطواف:</strong> اكشف كتفك الأيمن (الاضطباع).
+          </div>
+          
+          <div class="alert-slate mb-2">
+            <strong>الشوط الأول:</strong> قف أمام الحجر الأسود، أشر إليه وقل: "بسم الله، والله أكبر". امشِ بسرعة (هرولة). بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+          </div>
+          ${makeCounterHTML({ key: "tmt_umrah_tawaf_1", title: "تأكيد الشوط الأول", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثاني:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". امشِ بسرعة. بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_umrah_tawaf_2", title: "تأكيد الشوط الثاني", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثالث:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". امشِ بسرعة. بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_umrah_tawaf_3", title: "تأكيد الشوط الثالث", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الرابع:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". (توقف عن الهرولة وامش مشياً عادياً). بين الركنين قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_umrah_tawaf_4", title: "تأكيد الشوط الرابع", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الخامس:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". امشِ مشياً عادياً. بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_umrah_tawaf_5", title: "تأكيد الشوط الخامس", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السادس:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". امشِ مشياً عادياً. بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_umrah_tawaf_6", title: "تأكيد الشوط السادس", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السابع:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". امشِ مشياً عادياً. بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_umrah_tawaf_7", title: "تأكيد الشوط السابع", count: 1, say: "بسم الله والله أكبر" })}
+          
+          <div class="alert-slate mt-3">
+            <strong>بعد الطواف مباشرة:</strong> غط كتفك الأيمن. صل ركعتين خلف مقام إبراهيم. اشرب من ماء زمزم. توجه إلى الصفا لبدء السعي.
+          </div>
+        `
+      },
+{
+        id: "tmt-3",
+        badge: "التمتع (٣)",
+        title: "سعي العمرة (٧ أشواط) + التحلل الكامل",
+        scene: "sai",
+        html: `
+          <div class="alert-green mb-3">
+            <strong>عند صعود جبل الصفا للبدء بالسعي اقرأ مرة واحدة فقط:</strong><br>
+            "إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ ۖ فَمَنْ حَجَّ الْبَيْتَ أَوِ اعْتَمَرَ فَلَا جُنَاحَ عَلَيْهِ أَن يَطَّوَّفَ بِهِمَا ۚ وَمَن تَطَوَّعَ خَيْرًا فَإِنَّ اللَّهَ شَاكِرٌ عَلِيمٌ.. أبدأ بما بدأ الله به."
+          </div>
+          
+          <div class="alert-slate mb-2">
+            <strong>الشوط الأول (من الصفا إلى المروة):</strong><br>
+            قف على الصفا مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+            انزل وامش نحو المروة، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للمروة.
+          </div>
+          ${makeCounterHTML({ key: "tmt_umrah_sai_1", title: "تأكيد الشوط الأول", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثاني (من المروة إلى الصفا):</strong><br>
+            قف على المروة مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+            انزل وامش نحو الصفا، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للصفا.
+          </div>
+          ${makeCounterHTML({ key: "tmt_umrah_sai_2", title: "تأكيد الشوط الثاني", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثالث (من الصفا إلى المروة):</strong><br>
+            قف على الصفا مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+            انزل وامش نحو المروة، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للمروة.
+          </div>
+          ${makeCounterHTML({ key: "tmt_umrah_sai_3", title: "تأكيد الشوط الثالث", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الرابع (من المروة إلى الصفا):</strong><br>
+            قف على المروة مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+            انزل وامش نحو الصفا، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للصفا.
+          </div>
+          ${makeCounterHTML({ key: "tmt_umrah_sai_4", title: "تأكيد الشوط الرابع", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الخامس (من الصفا إلى المروة):</strong><br>
+            قف على الصفا مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+            انزل وامش نحو المروة، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للمروة.
+          </div>
+          ${makeCounterHTML({ key: "tmt_umrah_sai_5", title: "تأكيد الشوط الخامس", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السادس (من المروة إلى الصفا):</strong><br>
+            قف على المروة مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+            انزل وامش نحو الصفا، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للصفا.
+          </div>
+          ${makeCounterHTML({ key: "tmt_umrah_sai_6", title: "تأكيد الشوط السادس", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السابع (من الصفا إلى المروة):</strong><br>
+            قف على الصفا مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+            انزل وامش نحو المروة، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للمروة. (توقف عند المروة، انتهى السعي).
+          </div>
+          ${makeCounterHTML({ key: "tmt_umrah_sai_7", title: "تأكيد الشوط السابع", count: 1, say: "الله أكبر" })}
+          
+          <div class="alert-green mt-3">
+            🎉 <strong>التحلل من العمرة:</strong> احلق شعرك أو قصره بالكامل بالتساوي (التقصير أفضل للرجل لترك الحلق للحج)، وتقص المرأة قدر أنملة. 
+            <br><br><strong>تهانينا:</strong> اخلع الإحرام والبس ملابسك العادية، أنت الآن في حِلٍ تام (كل شيء حلال لك حتى زوجتك) حتى يوم ٨ ذي الحجة.
+          </div>
         `
       },
       {
-        id:"tmt-6",
-        badge:"ليلة ٩",
-        title:"الإفاضة إلى مزدلفة بعد الغروب: جمع المغرب والعشاء، المبيت، صلاة الفجر",
-        scene:"muzdalifah",
+        id: "tmt-4",
+        badge: "٨ ذو الحجة (التروية)",
+        title: "الإحرام للحج من مكة والتوجه لمنى",
+        scene: "mina",
         html: `
-          <div class="alert-slate"><strong>مزدلفة:</strong> جمع المغرب والعشاء، ثم المبيت، ثم صلاة الفجر.</div>
-          <div class="alert-green mt-3"><strong>مفيد:</strong> تجهيز حصى الرمي حسب التنظيم.</div>
+          <div class="alert-green mb-3">
+            <strong>الإحرام للحج:</strong> اغتسل في مقر سكنك بمكة، والبس ملابس الإحرام، ثم اقرأ بصوت مسموع لعقد نية الحج: <br>
+            "لبيك اللهم حجاً.. اللهم إن حبسني حابس فَمَحِلّي حيث حبستني"
+          </div>
+          <div class="alert-slate mt-3">
+            <strong>ما تفعله اليوم:</strong><br>
+            توجه إلى منى. بت فيها. صل (الظهر، العصر، المغرب، العشاء، وفجر يوم عرفة) كل صلاة في وقتها الأساسي. قصر الرباعية إلى ركعتين (بدون جمع). وأكثر من التلبية.
+          </div>
         `
       },
       {
-        id:"tmt-7",
-        badge:"١٠ ذو الحجة",
-        title:"يوم النحر: رمي جمرة العقبة (٧) + الهدي + الحلق/التقصير (التحلل الأول)",
-        scene:"jamarat",
+        id: "tmt-5",
+        badge: "٩ ذو الحجة (عرفة)",
+        title: "الوقوف بعرفة (الركن الأعظم)",
+        scene: "arafat",
         html: `
-          <div class="alert-green"><strong>الرمي:</strong> ٧ حصيات مع التكبير.</div>
-          ${makeCounterHTML({ key:"tmt_aqabah", title:"باقي حصى جمرة العقبة", count:7, say:"الله أكبر" })}
-          <div class="alert-red mt-3"><strong>الهدي:</strong> يلزم المتمتع غالباً.</div>
-          <div class="alert-slate mt-3"><strong>التحلل الأول:</strong> يحل كل شيء إلا النساء.</div>
+          <div class="alert-slate mb-3">
+            <strong>الوصول والصلاة:</strong><br>
+            بعد الشروق توجه لعرفة. في وقت الظهر صل الظهر والعصر جمع تقديم وقصر (ركعتين ثم ركعتين).
+          </div>
+          <div class="alert-green">
+            <strong>الوقوف والدعاء:</strong><br>
+            ابق داخل حدود عرفة. استقبل القبلة وارفع يديك وردد حتى غروب الشمس:<br>
+            "لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير"
+          </div>
         `
       },
       {
-        id:"tmt-8",
-        badge:"١٠ ذو الحجة",
-        title:"طواف الإفاضة (٧) + سعي الحج (٧) ثم التحلل التام",
-        scene:"kaaba",
+        id: "tmt-6",
+        badge: "ليلة ١٠ ذي الحجة",
+        title: "مزدلفة (جمع المغرب والعشاء + المبيت)",
+        scene: "muzdalifah",
         html: `
-          <div class="alert-green"><strong>طواف الإفاضة:</strong> ركن أساسي.</div>
-          ${makeCounterHTML({ key:"tmt_ifadah", title:"باقي أشواط طواف الإفاضة", count:7, say:"الله أكبر" })}
-          <div class="alert-green mt-3"><strong>سعي الحج للتمتع:</strong></div>
-          ${makeCounterHTML({ key:"tmt_hajj_sai", title:"باقي أشواط سعي الحج", count:7, say:"سبحان الله" })}
-          <div class="alert-slate mt-3"><strong>التحلل الثاني:</strong> يحل كل شيء حتى النساء.</div>
+          <div class="alert-slate mb-3">
+            <strong>فور الوصول ليلا:</strong><br>
+            صل المغرب (٣ ركعات) والعشاء (ركعتين) جمع تأخير وقصر.
+          </div>
+          <div class="alert-green">
+            <strong>ما يجب فعله:</strong><br>
+            ١. نم في مزدلفة حتى الفجر.<br>
+            ٢. اجمع ٧ حصيات بحجم حبة الفول لرمي جمرة العقبة غدا.<br>
+            ٣. صل الفجر وادع طويلا ثم توجه لمنى قبل شروق الشمس.
+          </div>
         `
       },
       {
-        id:"tmt-9",
-        badge:"أيام التشريق",
-        title:"١١–١٣: المبيت بمنى + رمي الجمرات الثلاث بعد الزوال",
-        scene:"jamarat",
+        id: "tmt-7",
+        badge: "١٠ ذو الحجة (النحر)",
+        title: "جمرة العقبة + الهدي + التحلل الأول",
+        scene: "jamarat",
         html: `
-          <div class="alert-green"><strong>كل يوم:</strong> رمي الصغرى ثم الوسطى ثم الكبرى، لكل واحدة ٧ حصيات بعد الزوال.</div>
-          ${makeCounterHTML({ key:"tmt_day11", title:"اليوم ١١: إجمالي الحصيات (٣×٧)", count:21, say:"الله أكبر" })}
-          ${makeCounterHTML({ key:"tmt_day12", title:"اليوم ١٢: إجمالي الحصيات (٣×٧)", count:21, say:"الله أكبر" })}
-          ${makeCounterHTML({ key:"tmt_day13", title:"اليوم ١٣ (لمن تأخر): إجمالي الحصيات", count:21, say:"الله أكبر" })}
-          <div class="alert-slate mt-3"><strong>التعجل:</strong> الخروج من منى قبل الغروب بعد رمي يوم ١٢.</div>
+          <div class="alert-green mb-3">
+            <strong>ارمي جمرة العقبة الكبرى فقط:</strong><br>
+            ارفع يدك مع كل حصاة وقل: "الله أكبر". (توقف عن التلبية نهائيا).
+          </div>
+          ${makeCounterHTML({ key: "tmt_aqabah", title: "عداد حصى جمرة العقبة", count: 7, say: "الله أكبر" })}
+          <div class="alert-red mt-3">
+            <strong>ذبح الهدي (واجب على المتمتع):</strong><br>
+            يجب عليك ذبح شاة (أو صك هدي). إذا لم تستطع مادياً تصوم ٣ أيام في الحج و٧ إذا رجعت لبلدك.
+          </div>
+          <div class="alert-slate mt-3">
+            <strong>بعد الهدي:</strong><br>
+            احلق شعرك تماما أو قصره (الحلق أفضل للرجال).<br><br>
+            🎉 <strong>التحلل الأصغر:</strong> اخلع الإحرام والبس ملابسك العادية وتعطر. كل شيء حلال الآن ما عدا النساء.
+          </div>
         `
       },
       {
-        id:"tmt-10",
-        badge:"الختام",
-        title:"طواف الوداع (٧) ثم السفر (يسقط عن الحائض والنفساء)",
-        scene:"kaaba",
+        id: "tmt-8",
+        badge: "١٠ ذو الحجة (طواف الإفاضة)",
+        title: "طواف الإفاضة وسعي الحج + التحلل الأكبر",
+        scene: "kaaba",
         html: `
-          <div class="alert-green"><strong>طواف الوداع:</strong> آخر عمل قبل مغادرة مكة لغير أهلها.</div>
-          ${makeCounterHTML({ key:"tmt_wadaa", title:"باقي أشواط طواف الوداع", count:7, say:"الله أكبر" })}
+          <div class="alert-slate mb-3">
+            <strong>في الحرم (بملابسك العادية):</strong><br>
+            طواف الإفاضة (الركن). ابدأ من الحجر الأسود وامش مشيا عاديا في كل الأشواط (لا يوجد اضطباع ولا هرولة).
+          </div>
+          
+          <div class="alert-slate mb-2">
+            <strong>الشوط الأول:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_ifadah_1", title: "تأكيد الشوط الأول", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثاني:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_ifadah_2", title: "تأكيد الشوط الثاني", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثالث:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_ifadah_3", title: "تأكيد الشوط الثالث", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الرابع:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_ifadah_4", title: "تأكيد الشوط الرابع", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الخامس:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_ifadah_5", title: "تأكيد الشوط الخامس", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السادس:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_ifadah_6", title: "تأكيد الشوط السادس", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السابع:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_ifadah_7", title: "تأكيد الشوط السابع", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3">
+            <strong>بعد الطواف:</strong> صل ركعتين خلف المقام. وتوجه إلى الصفا لسعي الحج (لأن سعيك الأول كان للعمرة).
+          </div>
+
+          <hr style="border-top: 1px solid var(--color-border); margin: 20px 0;">
+
+          <div class="alert-green mt-3 mb-3">
+            <strong>سعي الحج (٧ أشواط):</strong> اقرأ عند صعود الصفا مرة واحدة: "إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ..."
+          </div>
+
+          <div class="alert-slate mb-2">
+            <strong>الشوط الأول (من الصفا للمروة):</strong> قف على الصفا وقل الدعاء والتكبير ٣ مرات. امش نحو المروة وهرول بين العلمين الأخضرين.
+          </div>
+          ${makeCounterHTML({ key: "tmt_hajj_sai_1", title: "تأكيد الشوط الأول", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثاني (من المروة للصفا):</strong> قف على المروة وقل الدعاء والتكبير ٣ مرات. امش نحو الصفا وهرول بين العلمين.
+          </div>
+          ${makeCounterHTML({ key: "tmt_hajj_sai_2", title: "تأكيد الشوط الثاني", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثالث (من الصفا للمروة):</strong> كبر وادع ٣ مرات على الصفا. انزل وامش للمروة.
+          </div>
+          ${makeCounterHTML({ key: "tmt_hajj_sai_3", title: "تأكيد الشوط الثالث", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الرابع (من المروة للصفا):</strong> كبر وادع ٣ مرات على المروة. انزل وامش للصفا.
+          </div>
+          ${makeCounterHTML({ key: "tmt_hajj_sai_4", title: "تأكيد الشوط الرابع", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الخامس (من الصفا للمروة):</strong> كبر وادع ٣ مرات على الصفا. انزل وامش للمروة.
+          </div>
+          ${makeCounterHTML({ key: "tmt_hajj_sai_5", title: "تأكيد الشوط الخامس", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السادس (من المروة للصفا):</strong> كبر وادع ٣ مرات على المروة. انزل وامش للصفا.
+          </div>
+          ${makeCounterHTML({ key: "tmt_hajj_sai_6", title: "تأكيد الشوط السادس", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السابع (من الصفا للمروة):</strong> كبر وادع ٣ مرات على الصفا. انزل وامش للمروة. (توقف عند المروة، انتهى السعي).
+          </div>
+          ${makeCounterHTML({ key: "tmt_hajj_sai_7", title: "تأكيد الشوط السابع", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-green mt-3">
+            🎉 <strong>التحلل الأكبر:</strong> الآن حلال لك كل شيء حتى زوجتك. عد إلى منى للمبيت.
+          </div>
+        `
+      },
+      {
+        id: "tmt-9",
+        badge: "أيام التشريق",
+        title: "١١ و ١٢ و ١٣: رمي الجمرات الثلاث",
+        scene: "jamarat",
+        html: `
+          <div class="alert-slate mb-3">
+            <strong>الموعد:</strong> الرمي يبدأ بعد أذان الظهر في كل يوم من أيام التشريق.
+          </div>
+          <div class="alert-green mb-3">
+            <strong>الترتيب اليومي (ارمي كل جمرة بـ ٧ حصيات وكبر مع كل حصاة):</strong><br>
+            ١. الجمرة الصغرى: ارمها ثم تنح وادع طويلا.<br>
+            ٢. الجمرة الوسطى: ارمها ثم تنح وادع طويلا.<br>
+            ٣. جمرة العقبة الكبرى: ارمها وانصرف فورا دون دعاء.
+          </div>
+          ${makeCounterHTML({ key: "tmt_day11", title: "اليوم ١١: إجمالي الحصيات", count: 21, say: "الله أكبر" })}
+          ${makeCounterHTML({ key: "tmt_day12", title: "اليوم ١٢: إجمالي الحصيات", count: 21, say: "الله أكبر" })}
+          <div class="alert-slate mt-3">
+            <strong>التعجل:</strong> يمكنك الخروج من منى قبل غروب شمس يوم ١٢. إذا بقيت لليوم ١٣ فارم الجمرات الثلاث مرة أخرى.
+          </div>
+          ${makeCounterHTML({ key: "tmt_day13", title: "اليوم ١٣ (لغير المتعجل)", count: 21, say: "الله أكبر" })}
+        `
+      },
+      {
+        id: "tmt-10",
+        badge: "الختام",
+        title: "طواف الوداع (الرحيل)",
+        scene: "kaaba",
+        html: `
+          <div class="alert-green mb-3">
+            <strong>قبل مغادرة مكة مباشرة:</strong><br>
+            طواف الوداع. ابدأ من الحجر الأسود وامش مشيا عاديا.
+          </div>
+          
+          <div class="alert-slate mb-2">
+            <strong>الشوط الأول:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_wadaa_1", title: "تأكيد الشوط الأول", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثاني:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_wadaa_2", title: "تأكيد الشوط الثاني", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثالث:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_wadaa_3", title: "تأكيد الشوط الثالث", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الرابع:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_wadaa_4", title: "تأكيد الشوط الرابع", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الخامس:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_wadaa_5", title: "تأكيد الشوط الخامس", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السادس:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_wadaa_6", title: "تأكيد الشوط السادس", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السابع:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "tmt_wadaa_7", title: "تأكيد الشوط السابع", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3">
+            <strong>بعد الطواف:</strong> صل ركعتين وانطلق في حفظ الله. تقبل الله حجكم وسعيكم. (يسقط الطواف عن الحائض والنفساء).
+          </div>
         `
       },
       appendixManhurat, appendixWomen, appendixChecklist, appendixNums, appendixDuas
     ];
   }
-
-  if (typeKey === "qiran") {
+  }
+if (typeKey === "qiran") {
     return [
       intro,
       {
-        id:"qr-1",
-        badge:"القِران (١)",
-        title:"الإحرام بالحج والعمرة معاً من الميقات + التلبية",
-        scene:"ihram",
+        id: "qr-1",
+        badge: "القِران (١)",
+        title: "الإحرام بالحج والعمرة معاً من الميقات + التلبية",
+        scene: "ihram",
         html: `
-          <div class="alert-green"><strong>النية:</strong> الحج والعمرة معاً.</div>
-          <div class="alert-red mt-3"><strong>مهم:</strong> يبقى على الإحرام حتى يوم النحر.</div>
-        `
-      },
-      {
-        id:"qr-2",
-        badge:"القِران (٢)",
-        title:"مكة: طواف القدوم (٧) + السعي (٧) ثم البقاء على الإحرام",
-        scene:"kaaba",
-        html: `
-          ${makeCounterHTML({ key:"qr_qudum", title:"باقي أشواط طواف القدوم", count:7, say:"الله أكبر" })}
-          ${makeCounterHTML({ key:"qr_sai", title:"باقي أشواط السعي", count:7, say:"سبحان الله" })}
-          <div class="alert-slate mt-3"><strong>بعدها:</strong> يظل مُحرِماً إلى يوم النحر.</div>
-        `
-      },
-      {
-        id:"qr-3",
-        badge:"٨ ذو الحجة",
-        title:"منى: يوم التروية والصلاة وقصر الرباعية",
-        scene:"mina",
-        html: `<div class="alert-slate">المبيت بمنى والصلاة في أوقاتها مع قصر الرباعية.</div>`
-      },
-      {
-        id:"qr-4",
-        badge:"٩ ذو الحجة",
-        title:"عرفة: ظهر+عصر جمع تقديم وقصر + دعاء حتى الغروب",
-        scene:"arafat",
-        html: `<div class="alert-green">الوقوف بعرفة هو الركن الأعظم.</div>`
-      },
-      {
-        id:"qr-5",
-        badge:"ليلة ٩",
-        title:"مزدلفة: جمع المغرب والعشاء + المبيت + الفجر",
-        scene:"muzdalifah",
-        html: `<div class="alert-slate">جمع المغرب والعشاء، ثم المبيت، ثم صلاة الفجر.</div>`
-      },
-      {
-        id:"qr-6",
-        badge:"١٠ ذو الحجة",
-        title:"يوم النحر: رمي جمرة العقبة (٧) + الهدي + الحلق/التقصير (التحلل الأول)",
-        scene:"jamarat",
-        html: `
-          ${makeCounterHTML({ key:"qr_aqabah", title:"باقي حصى جمرة العقبة", count:7, say:"الله أكبر" })}
-          <div class="alert-red mt-3"><strong>الهدي:</strong> يلزم القارن غالباً.</div>
-          <div class="alert-slate mt-3"><strong>التحلل الأول:</strong> يحل كل شيء إلا النساء.</div>
-        `
-      },
-      {
-        id:"qr-7",
-        badge:"١٠ ذو الحجة",
-        title:"طواف الإفاضة (٧) + (السعي إن لم يكن سعى بعد القدوم) + التحلل التام",
-        scene:"kaaba",
-        html: `
-          ${makeCounterHTML({ key:"qr_ifadah", title:"باقي أشواط طواف الإفاضة", count:7, say:"الله أكبر" })}
-          <div class="alert-slate mt-3">
-            <strong>السعي:</strong> إن تم بعد طواف القدوم فغالباً لا يُعاد، وإن لم يتم فيُؤدى هنا.
+          <div class="alert-green mb-3">
+            <strong>اقرأ الآن بصوت مسموع لعقد النية:</strong><br>
+            "لبيك اللهم عُمرةً وحجاً.. اللهم إن حبسني حابس فَمَحِلّي حيث حبستني"
           </div>
-          ${makeCounterHTML({ key:"qr_sai_if_needed", title:"السعي (إن لم يُؤدَّ سابقاً)", count:7, say:"سبحان الله" })}
-          <div class="alert-green mt-3"><strong>التحلل الثاني:</strong> يحل كل شيء حتى النساء.</div>
+          <div class="alert-slate mt-3">
+            <strong>ابدأ التلبية فوراً وردد طوال الطريق:</strong><br>
+            "لبيك اللهم لبيك، لبيك لا شريك لك لبيك، إن الحمد والنعمة لك والملك، لا شريك لك"
+          </div>
         `
       },
       {
-        id:"qr-8",
-        badge:"أيام التشريق",
-        title:"١١–١٣: المبيت بمنى + رمي الجمرات الثلاث بعد الزوال",
-        scene:"jamarat",
+        id: "qr-2",
+        badge: "القِران (٢)",
+        title: "طواف القدوم (سنة) + سعي الحج والعمرة معاً (تقديم)",
+        scene: "kaaba",
         html: `
-          ${makeCounterHTML({ key:"qr_day11", title:"اليوم ١١: إجمالي الحصيات (٣×٧)", count:21, say:"الله أكبر" })}
-          ${makeCounterHTML({ key:"qr_day12", title:"اليوم ١٢: إجمالي الحصيات (٣×٧)", count:21, say:"الله أكبر" })}
-          ${makeCounterHTML({ key:"qr_day13", title:"اليوم ١٣ (لمن تأخر): إجمالي الحصيات", count:21, say:"الله أكبر" })}
+          <div class="alert-slate mb-3">
+            <strong>عند رؤية الكعبة قل:</strong><br>
+            "اللهم زِدْ هذا البيت تشريفاً وتعظيماً وتكريماً ومهابةً"
+          </div>
+          <div class="alert-green mb-3">
+            <strong>بداية الطواف:</strong> اكشف كتفك الأيمن (الاضطباع).
+          </div>
+          
+          <div class="alert-slate mb-2">
+            <strong>الشوط الأول:</strong> قف أمام الحجر الأسود، أشر إليه وقل: "بسم الله، والله أكبر". امشِ بسرعة (هرولة). بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+          </div>
+          ${makeCounterHTML({ key: "qr_qudum_1", title: "تأكيد الشوط الأول", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثاني:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". امشِ بسرعة. بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+          </div>
+          ${makeCounterHTML({ key: "qr_qudum_2", title: "تأكيد الشوط الثاني", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثالث:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". امشِ بسرعة. بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+          </div>
+          ${makeCounterHTML({ key: "qr_qudum_3", title: "تأكيد الشوط الثالث", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الرابع:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". امشِ مشياً عادياً. بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+          </div>
+          ${makeCounterHTML({ key: "qr_qudum_4", title: "تأكيد الشوط الرابع", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الخامس:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". امشِ مشياً عادياً. بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+          </div>
+          ${makeCounterHTML({ key: "qr_qudum_5", title: "تأكيد الشوط الخامس", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السادس:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". امشِ مشياً عادياً. بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+          </div>
+          ${makeCounterHTML({ key: "qr_qudum_6", title: "تأكيد الشوط السادس", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السابع:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". امشِ مشياً عادياً. بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+          </div>
+          ${makeCounterHTML({ key: "qr_qudum_7", title: "تأكيد الشوط السابع", count: 1, say: "بسم الله والله أكبر" })}
+          
+          <div class="alert-slate mt-3">
+            <strong>بعد الطواف مباشرة:</strong> غط كتفك الأيمن. صل ركعتين خلف مقام إبراهيم. اشرب من ماء زمزم. توجه إلى الصفا لبدء السعي.
+          </div>
+          
+          <hr style="border-top: 1px solid var(--color-border); margin: 20px 0;">
+          
+          <div class="alert-green mt-3 mb-3">
+            <strong>عند صعود جبل الصفا للبدء بالسعي اقرأ مرة واحدة فقط:</strong><br>
+            "إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ ۖ فَمَنْ حَجَّ الْبَيْتَ أَوِ اعْتَمَرَ فَلَا جُنَاحَ عَلَيْهِ أَن يَطَّوَّفَ بِهِمَا ۚ وَمَن تَطَوَّعَ خَيْرًا فَإِنَّ اللَّهَ شَاكِرٌ عَلِيمٌ.. أبدأ بما بدأ الله به."
+          </div>
+          
+          <div class="alert-slate mb-2">
+            <strong>الشوط الأول (من الصفا إلى المروة):</strong><br>
+            قف على الصفا مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+            انزل وامش نحو المروة، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للمروة.
+          </div>
+          ${makeCounterHTML({ key: "qr_sai_1", title: "تأكيد الشوط الأول", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثاني (من المروة إلى الصفا):</strong><br>
+            قف على المروة مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+            انزل وامش نحو الصفا، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للصفا.
+          </div>
+          ${makeCounterHTML({ key: "qr_sai_2", title: "تأكيد الشوط الثاني", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثالث (من الصفا إلى المروة):</strong><br>
+            قف على الصفا مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+            انزل وامش نحو المروة، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للمروة.
+          </div>
+          ${makeCounterHTML({ key: "qr_sai_3", title: "تأكيد الشوط الثالث", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الرابع (من المروة إلى الصفا):</strong><br>
+            قف على المروة مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+            انزل وامش نحو الصفا، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للصفا.
+          </div>
+          ${makeCounterHTML({ key: "qr_sai_4", title: "تأكيد الشوط الرابع", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الخامس (من الصفا إلى المروة):</strong><br>
+            قف على الصفا مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+            انزل وامش نحو المروة، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للمروة.
+          </div>
+          ${makeCounterHTML({ key: "qr_sai_5", title: "تأكيد الشوط الخامس", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السادس (من المروة إلى الصفا):</strong><br>
+            قف على المروة مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+            انزل وامش نحو الصفا، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للصفا.
+          </div>
+          ${makeCounterHTML({ key: "qr_sai_6", title: "تأكيد الشوط السادس", count: 1, say: "الله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السابع (من الصفا إلى المروة):</strong><br>
+            قف على الصفا مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+            انزل وامش نحو المروة، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للمروة. (توقف هنا).
+          </div>
+          ${makeCounterHTML({ key: "qr_sai_7", title: "تأكيد الشوط السابع", count: 1, say: "الله أكبر" })}
+          
+          <div class="alert-red mt-3">
+            <strong>تنبيه هام جدا للقارن:</strong> انتهى السعي. (هذا السعي يكفيك للحج والعمرة معاً). <strong>لا تحلق ولا تقصر شعرك</strong>. ابق بملابس الإحرام كما أنت حتى يوم العيد.
+          </div>
         `
       },
       {
-        id:"qr-9",
-        badge:"الختام",
-        title:"طواف الوداع (٧) ثم السفر (يسقط عن الحائض والنفساء)",
-        scene:"kaaba",
-        html: `${makeCounterHTML({ key:"qr_wadaa", title:"باقي أشواط طواف الوداع", count:7, say:"الله أكبر" })}`
+        id: "qr-3",
+        badge: "٨ ذو الحجة",
+        title: "يوم التروية في منى (بملابس الإحرام)",
+        scene: "mina",
+        html: `
+          <div class="alert-slate">
+            <strong>ما تفعله اليوم:</strong><br>
+            توجه إلى منى بملابس إحرامك. بت فيها. صل (الظهر، العصر، المغرب، العشاء، وفجر يوم عرفة) كل صلاة في وقتها الأساسي. قصر الرباعية إلى ركعتين (بدون جمع).
+          </div>
+        `
+      },
+      {
+        id: "qr-4",
+        badge: "٩ ذو الحجة",
+        title: "يوم عرفة (الركن الأعظم)",
+        scene: "arafat",
+        html: `
+          <div class="alert-slate mb-3">
+            <strong>الوصول والصلاة:</strong><br>
+            بعد الشروق توجه لعرفة. في وقت الظهر صل الظهر والعصر جمع تقديم وقصر (ركعتين ثم ركعتين).
+          </div>
+          <div class="alert-green">
+            <strong>الوقوف والدعاء:</strong><br>
+            ابق داخل حدود عرفة. استقبل القبلة وارفع يديك وردد حتى غروب الشمس:<br>
+            "لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير"
+          </div>
+        `
+      },
+      {
+        id: "qr-5",
+        badge: "ليلة ٩",
+        title: "مزدلفة (جمع المغرب والعشاء + المبيت)",
+        scene: "muzdalifah",
+        html: `
+          <div class="alert-slate mb-3">
+            <strong>فور الوصول ليلا:</strong><br>
+            صل المغرب (٣ ركعات) والعشاء (ركعتين) جمع تأخير وقصر.
+          </div>
+          <div class="alert-green">
+            <strong>ما يجب فعله:</strong><br>
+            ١. نم في مزدلفة حتى الفجر.<br>
+            ٢. اجمع ٧ حصيات بحجم حبة الفول لرمي جمرة العقبة غدا.<br>
+            ٣. صل الفجر وادع طويلا ثم توجه لمنى قبل شروق الشمس.
+          </div>
+        `
+      },
+      {
+        id: "qr-6",
+        badge: "١٠ ذو الحجة",
+        title: "يوم العيد: جمرة العقبة + الهدي + التحلل الأول",
+        scene: "jamarat",
+        html: `
+          <div class="alert-green mb-3">
+            <strong>ارمي جمرة العقبة الكبرى فقط:</strong><br>
+            ارفع يدك مع كل حصاة وقل: "الله أكبر". (توقف عن التلبية نهائيا).
+          </div>
+          ${makeCounterHTML({ key: "qr_aqabah", title: "عداد حصى جمرة العقبة", count: 7, say: "الله أكبر" })}
+          <div class="alert-red mt-3">
+            <strong>ذبح الهدي (واجب على القارن):</strong><br>
+            يجب عليك ذبح شاة (أو صك هدي). إذا لم تستطع مادياً تصوم ٣ أيام في الحج و٧ إذا رجعت لبلدك.
+          </div>
+          <div class="alert-slate mt-3">
+            <strong>بعد الهدي:</strong><br>
+            احلق شعرك تماما أو قصره (الحلق أفضل).<br><br>
+            <strong>التحلل الأصغر:</strong> اخلع الإحرام والبس ملابسك العادية وتعطر. كل شيء حلال الآن ما عدا النساء.
+          </div>
+        `
+      },
+      {
+        id: "qr-7",
+        badge: "١٠ ذو الحجة",
+        title: "طواف الإفاضة (الركن) + التحلل الأكبر",
+        scene: "kaaba",
+        html: `
+          <div class="alert-slate mb-3">
+            <strong>في الحرم (بملابسك العادية):</strong><br>
+            طواف الإفاضة. ابدأ من الحجر الأسود وامش مشيا عاديا (لا يوجد هرولة).
+          </div>
+          
+          <div class="alert-slate mb-2">
+            <strong>الشوط الأول:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+          </div>
+          ${makeCounterHTML({ key: "qr_ifadah_1", title: "تأكيد الشوط الأول", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثاني:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+          </div>
+          ${makeCounterHTML({ key: "qr_ifadah_2", title: "تأكيد الشوط الثاني", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثالث:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+          </div>
+          ${makeCounterHTML({ key: "qr_ifadah_3", title: "تأكيد الشوط الثالث", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الرابع:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+          </div>
+          ${makeCounterHTML({ key: "qr_ifadah_4", title: "تأكيد الشوط الرابع", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الخامس:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+          </div>
+          ${makeCounterHTML({ key: "qr_ifadah_5", title: "تأكيد الشوط الخامس", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السادس:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+          </div>
+          ${makeCounterHTML({ key: "qr_ifadah_6", title: "تأكيد الشوط السادس", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السابع:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+          </div>
+          ${makeCounterHTML({ key: "qr_ifadah_7", title: "تأكيد الشوط السابع", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3">
+            <strong>بعد الطواف:</strong> صل ركعتين خلف المقام.
+          </div>
+
+          <div class="alert-green mt-3">
+            <strong>السعي:</strong><br>
+            بما أنك أتممت السعي بعد طواف القدوم في البداية فلا تسع مرة أخرى. (أما إذا لم تكن قد سعيت، فاسع الآن ٧ أشواط بنفس طريقة سعيك الأول).
+          </div>
+          <div class="alert-slate mt-3">
+            <strong>التحلل الأكبر:</strong> الآن حلال لك كل شيء حتى زوجتك. عد إلى منى للمبيت.
+          </div>
+        `
+      },
+      {
+        id: "qr-8",
+        badge: "أيام التشريق",
+        title: "١١ و ١٢ و ١٣: رمي الجمرات الثلاث",
+        scene: "jamarat",
+        html: `
+          <div class="alert-slate mb-3">
+            <strong>الموعد:</strong> الرمي يبدأ بعد أذان الظهر في كل يوم من أيام التشريق.
+          </div>
+          <div class="alert-green mb-3">
+            <strong>الترتيب اليومي (ارمي كل جمرة بـ ٧ حصيات وكبر مع كل حصاة):</strong><br>
+            ١. الجمرة الصغرى: ارمها ثم تنح وادع طويلا.<br>
+            ٢. الجمرة الوسطى: ارمها ثم تنح وادع طويلا.<br>
+            ٣. جمرة العقبة الكبرى: ارمها وانصرف فورا دون دعاء.
+          </div>
+          ${makeCounterHTML({ key: "qr_day11", title: "اليوم ١١: إجمالي الحصيات", count: 21, say: "الله أكبر" })}
+          ${makeCounterHTML({ key: "qr_day12", title: "اليوم ١٢: إجمالي الحصيات", count: 21, say: "الله أكبر" })}
+          <div class="alert-slate mt-3">
+            <strong>التعجل:</strong> يمكنك الخروج من منى قبل غروب شمس يوم ١٢. إذا بقيت لليوم ١٣ فارم الجمرات الثلاث مرة أخرى.
+          </div>
+          ${makeCounterHTML({ key: "qr_day13", title: "اليوم ١٣ (لغير المتعجل)", count: 21, say: "الله أكبر" })}
+        `
+      },
+      {
+        id: "qr-9",
+        badge: "الختام",
+        title: "طواف الوداع (الرحيل)",
+        scene: "kaaba",
+        html: `
+          <div class="alert-green mb-3">
+            <strong>قبل مغادرة مكة مباشرة:</strong><br>
+            طواف الوداع. ابدأ من الحجر الأسود وامش مشيا عاديا.
+          </div>
+          
+          <div class="alert-slate mb-2">
+            <strong>الشوط الأول:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+          </div>
+          ${makeCounterHTML({ key: "qr_wadaa_1", title: "تأكيد الشوط الأول", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثاني:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "qr_wadaa_2", title: "تأكيد الشوط الثاني", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الثالث:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "qr_wadaa_3", title: "تأكيد الشوط الثالث", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الرابع:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "qr_wadaa_4", title: "تأكيد الشوط الرابع", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط الخامس:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "qr_wadaa_5", title: "تأكيد الشوط الخامس", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السادس:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "qr_wadaa_6", title: "تأكيد الشوط السادس", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3 mb-2">
+            <strong>الشوط السابع:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+          </div>
+          ${makeCounterHTML({ key: "qr_wadaa_7", title: "تأكيد الشوط السابع", count: 1, say: "بسم الله والله أكبر" })}
+
+          <div class="alert-slate mt-3">
+            <strong>بعد الطواف:</strong> صل ركعتين وانطلق في حفظ الله. (يسقط الطواف عن الحائض والنفساء).
+          </div>
+        `
       },
       appendixManhurat, appendixWomen, appendixChecklist, appendixNums, appendixDuas
     ];
   }
-
   // ifrad
-  return [
+return [
     intro,
     {
-      id:"if-1",
-      badge:"الإفراد (١)",
-      title:"الإحرام بالحج فقط من الميقات + التلبية",
-      scene:"ihram",
+      id: "if-1",
+      badge: "الإفراد (١)",
+      title: "الإحرام بالحج من الميقات + التلبية",
+      scene: "ihram",
       html: `
-        <div class="alert-green"><strong>النية:</strong> الحج فقط.</div>
-        <div class="alert-slate mt-3"><strong>معلومة:</strong> لا يلزم الهدي غالباً.</div>
-      `
-    },
-    {
-      id:"if-2",
-      badge:"الإفراد (٢)",
-      title:"مكة: طواف القدوم (٧) + سعي الحج (٧) ثم البقاء على الإحرام",
-      scene:"kaaba",
-      html: `
-        ${makeCounterHTML({ key:"if_qudum", title:"باقي أشواط طواف القدوم", count:7, say:"الله أكبر" })}
-        ${makeCounterHTML({ key:"if_sai_early", title:"باقي أشواط السعي", count:7, say:"سبحان الله" })}
-      `
-    },
-    {
-      id:"if-3",
-      badge:"٨ ذو الحجة",
-      title:"منى: يوم التروية والصلاة وقصر الرباعية",
-      scene:"mina",
-      html: `<div class="alert-slate">المبيت بمنى والصلاة في أوقاتها مع قصر الرباعية.</div>`
-    },
-    {
-      id:"if-4",
-      badge:"٩ ذو الحجة",
-      title:"عرفة: ظهر+عصر جمع تقديم وقصر + دعاء حتى الغروب",
-      scene:"arafat",
-      html: `<div class="alert-green">الوقوف بعرفة هو الركن الأعظم.</div>`
-    },
-    {
-      id:"if-5",
-      badge:"ليلة ٩",
-      title:"مزدلفة: جمع المغرب والعشاء + المبيت + الفجر",
-      scene:"muzdalifah",
-      html: `<div class="alert-slate">جمع المغرب والعشاء، ثم المبيت، ثم صلاة الفجر.</div>`
-    },
-    {
-      id:"if-6",
-      badge:"١٠ ذو الحجة",
-      title:"يوم النحر: رمي جمرة العقبة (٧) + الحلق/التقصير (التحلل الأول)",
-      scene:"jamarat",
-      html: `
-        ${makeCounterHTML({ key:"if_aqabah", title:"باقي حصى جمرة العقبة", count:7, say:"الله أكبر" })}
-        <div class="alert-slate mt-3"><strong>التحلل الأول:</strong> يحل كل شيء إلا النساء.</div>
-      `
-    },
-    {
-      id:"if-7",
-      badge:"١٠ ذو الحجة",
-      title:"طواف الإفاضة (٧) + (السعي إن لم يكن سعى بعد القدوم) + التحلل التام",
-      scene:"kaaba",
-      html: `
-        ${makeCounterHTML({ key:"if_ifadah", title:"باقي أشواط طواف الإفاضة", count:7, say:"الله أكبر" })}
-        <div class="alert-slate mt-3">
-          <strong>السعي:</strong> إن تم بعد طواف القدوم فغالباً لا يُعاد، وإن لم يتم فيُؤدى هنا.
+        <div class="alert-green mb-3">
+          <strong>اقرأ الآن بصوت مسموع لعقد النية:</strong><br>
+          "لبيك اللهم حجاً.. اللهم إن حبسني حابس فَمَحِلّي حيث حبستني"
         </div>
-        ${makeCounterHTML({ key:"if_sai_if_needed", title:"السعي (إن لم يُؤدَّ سابقاً)", count:7, say:"سبحان الله" })}
-        <div class="alert-green mt-3"><strong>التحلل الثاني:</strong> يحل كل شيء حتى النساء.</div>
+        <div class="alert-slate mt-3">
+          <strong>ابدأ التلبية فوراً وردد طوال الطريق:</strong><br>
+          "لبيك اللهم لبيك، لبيك لا شريك لك لبيك، إن الحمد والنعمة لك والملك، لا شريك لك"
+        </div>
       `
     },
     {
-      id:"if-8",
-      badge:"أيام التشريق",
-      title:"١١–١٣: المبيت بمنى + رمي الجمرات الثلاث بعد الزوال",
-      scene:"jamarat",
+      id: "if-2",
+      badge: "الإفراد (٢)",
+      title: "طواف القدوم (سنة) + سعي الحج (تقديم)",
+      scene: "kaaba",
       html: `
-        ${makeCounterHTML({ key:"if_day11", title:"اليوم ١١: إجمالي الحصيات (٣×٧)", count:21, say:"الله أكبر" })}
-        ${makeCounterHTML({ key:"if_day12", title:"اليوم ١٢: إجمالي الحصيات (٣×٧)", count:21, say:"الله أكبر" })}
-        ${makeCounterHTML({ key:"if_day13", title:"اليوم ١٣ (لمن تأخر): إجمالي الحصيات", count:21, say:"الله أكبر" })}
+        <div class="alert-slate mb-3">
+          <strong>عند رؤية الكعبة قل:</strong><br>
+          "اللهم زِدْ هذا البيت تشريفاً وتعظيماً وتكريماً ومهابةً"
+        </div>
+        <div class="alert-green mb-3">
+          <strong>بداية الطواف:</strong> اكشف كتفك الأيمن (الاضطباع).
+        </div>
+        
+        <div class="alert-slate mb-2">
+          <strong>الشوط الأول:</strong> قف أمام الحجر الأسود، أشر إليه وقل: "بسم الله، والله أكبر". امشِ بسرعة (هرولة). بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+        </div>
+        ${makeCounterHTML({ key: "if_qudum_1", title: "تأكيد الشوط الأول", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الثاني:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". امشِ بسرعة. بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+        </div>
+        ${makeCounterHTML({ key: "if_qudum_2", title: "تأكيد الشوط الثاني", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الثالث:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". امشِ بسرعة. بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+        </div>
+        ${makeCounterHTML({ key: "if_qudum_3", title: "تأكيد الشوط الثالث", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الرابع:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". امشِ مشياً عادياً. بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+        </div>
+        ${makeCounterHTML({ key: "if_qudum_4", title: "تأكيد الشوط الرابع", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الخامس:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". امشِ مشياً عادياً. بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+        </div>
+        ${makeCounterHTML({ key: "if_qudum_5", title: "تأكيد الشوط الخامس", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط السادس:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". امشِ مشياً عادياً. بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+        </div>
+        ${makeCounterHTML({ key: "if_qudum_6", title: "تأكيد الشوط السادس", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط السابع:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". امشِ مشياً عادياً. بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ".
+        </div>
+        ${makeCounterHTML({ key: "if_qudum_7", title: "تأكيد الشوط السابع", count: 1, say: "بسم الله والله أكبر" })}
+        
+        <div class="alert-slate mt-3">
+          <strong>بعد الطواف مباشرة:</strong> غط كتفك الأيمن. صل ركعتين خلف مقام إبراهيم. اشرب من ماء زمزم. توجه إلى الصفا لبدء السعي.
+        </div>
+        
+        <hr style="border-top: 1px solid var(--color-border); margin: 20px 0;">
+        
+        <div class="alert-green mt-3 mb-3">
+          <strong>عند صعود جبل الصفا للبدء بالسعي اقرأ مرة واحدة فقط:</strong><br>
+          "إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ ۖ فَمَنْ حَجَّ الْبَيْتَ أَوِ اعْتَمَرَ فَلَا جُنَاحَ عَلَيْهِ أَن يَطَّوَّفَ بِهِمَا ۚ وَمَن تَطَوَّعَ خَيْرًا فَإِنَّ اللَّهَ شَاكِرٌ عَلِيمٌ.. أبدأ بما بدأ الله به."
+        </div>
+        
+        <div class="alert-slate mb-2">
+          <strong>الشوط الأول (من الصفا إلى المروة):</strong><br>
+          قف على الصفا مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+          انزل وامش نحو المروة، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للمروة.
+        </div>
+        ${makeCounterHTML({ key: "if_sai_1", title: "تأكيد الشوط الأول", count: 1, say: "الله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الثاني (من المروة إلى الصفا):</strong><br>
+          قف على المروة مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+          انزل وامش نحو الصفا، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للصفا.
+        </div>
+        ${makeCounterHTML({ key: "if_sai_2", title: "تأكيد الشوط الثاني", count: 1, say: "الله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الثالث (من الصفا إلى المروة):</strong><br>
+          قف على الصفا مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+          انزل وامش نحو المروة، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للمروة.
+        </div>
+        ${makeCounterHTML({ key: "if_sai_3", title: "تأكيد الشوط الثالث", count: 1, say: "الله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الرابع (من المروة إلى الصفا):</strong><br>
+          قف على المروة مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+          انزل وامش نحو الصفا، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للصفا.
+        </div>
+        ${makeCounterHTML({ key: "if_sai_4", title: "تأكيد الشوط الرابع", count: 1, say: "الله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الخامس (من الصفا إلى المروة):</strong><br>
+          قف على الصفا مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+          انزل وامش نحو المروة، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للمروة.
+        </div>
+        ${makeCounterHTML({ key: "if_sai_5", title: "تأكيد الشوط الخامس", count: 1, say: "الله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط السادس (من المروة إلى الصفا):</strong><br>
+          قف على المروة مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+          انزل وامش نحو الصفا، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للصفا.
+        </div>
+        ${makeCounterHTML({ key: "if_sai_6", title: "تأكيد الشوط السادس", count: 1, say: "الله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط السابع (من الصفا إلى المروة):</strong><br>
+          قف على الصفا مستقبلا الكعبة وقل ٣ مرات: "الله أكبر، الله أكبر، الله أكبر، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده".<br>
+          انزل وامش نحو المروة، وهرول للرجال بين العلمين الأخضرين وقل: "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ". ادع بما تشاء حتى تصل للمروة. (توقف هنا).
+        </div>
+        ${makeCounterHTML({ key: "if_sai_7", title: "تأكيد الشوط السابع", count: 1, say: "الله أكبر" })}
+        
+        <div class="alert-red mt-3">
+          <strong>تنبيه هام جدا:</strong> انتهى السعي. لا تحلق ولا تقصر شعرك. ابق بملابس الإحرام كما أنت حتى يوم العيد.
+        </div>
       `
     },
     {
-      id:"if-9",
-      badge:"الختام",
-      title:"طواف الوداع (٧) ثم السفر (يسقط عن الحائض والنفساء)",
-      scene:"kaaba",
-      html: `${makeCounterHTML({ key:"if_wadaa", title:"باقي أشواط طواف الوداع", count:7, say:"الله أكبر" })}`
+      id: "if-3",
+      badge: "٨ ذو الحجة",
+      title: "يوم التروية في منى (بملابس الإحرام)",
+      scene: "mina",
+      html: `
+        <div class="alert-slate">
+          <strong>ما تفعله اليوم:</strong><br>
+          توجه إلى منى بملابس إحرامك. بت فيها. صل (الظهر، العصر، المغرب، العشاء، وفجر يوم عرفة) كل صلاة في وقتها الأساسي. قصر الرباعية إلى ركعتين (بدون جمع).
+        </div>
+      `
+    },
+    {
+      id: "if-4",
+      badge: "٩ ذو الحجة",
+      title: "يوم عرفة (الركن الأعظم)",
+      scene: "arafat",
+      html: `
+        <div class="alert-slate mb-3">
+          <strong>الوصول والصلاة:</strong><br>
+          بعد الشروق توجه لعرفة. في وقت الظهر صل الظهر والعصر جمع تقديم وقصر (ركعتين ثم ركعتين).
+        </div>
+        <div class="alert-green">
+          <strong>الوقوف والدعاء:</strong><br>
+          ابق داخل حدود عرفة. استقبل القبلة وارفع يديك وردد حتى غروب الشمس:<br>
+          "لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير"
+        </div>
+      `
+    },
+    {
+      id: "if-5",
+      badge: "ليلة ٩",
+      title: "مزدلفة (جمع المغرب والعشاء + المبيت)",
+      scene: "muzdalifah",
+      html: `
+        <div class="alert-slate mb-3">
+          <strong>فور الوصول ليلا:</strong><br>
+          صل المغرب (٣ ركعات) والعشاء (ركعتين) جمع تأخير وقصر.
+        </div>
+        <div class="alert-green">
+          <strong>ما يجب فعله:</strong><br>
+          ١. نم في مزدلفة حتى الفجر.<br>
+          ٢. اجمع ٧ حصيات بحجم حبة الفول لرمي جمرة العقبة غدا.<br>
+          ٣. صل الفجر وادع طويلا ثم توجه لمنى قبل شروق الشمس.
+        </div>
+      `
+    },
+    {
+      id: "if-6",
+      badge: "١٠ ذو الحجة",
+      title: "يوم العيد: جمرة العقبة + التحلل الأول",
+      scene: "jamarat",
+      html: `
+        <div class="alert-green mb-3">
+          <strong>ارمي جمرة العقبة الكبرى فقط:</strong><br>
+          ارفع يدك مع كل حصاة وقل: "الله أكبر". (توقف عن التلبية نهائيا).
+        </div>
+        ${makeCounterHTML({ key: "if_aqabah", title: "عداد حصى جمرة العقبة", count: 7, say: "الله أكبر" })}
+        <div class="alert-slate mt-3">
+          <strong>بعد الرمي مباشرة:</strong><br>
+          احلق شعرك تماما أو قصره. (أنت كمفرد ليس عليك هدي أو ذبح).<br><br>
+          <strong>التحلل الأصغر:</strong> اخلع الإحرام والبس ملابسك العادية وتعطر. كل شيء حلال الآن ما عدا النساء.
+        </div>
+      `
+    },
+    {
+      id: "if-7",
+      badge: "١٠ ذو الحجة",
+      title: "طواف الإفاضة (الركن) + التحلل الأكبر",
+      scene: "kaaba",
+      html: `
+        <div class="alert-slate mb-3">
+          <strong>في الحرم (بملابسك العادية):</strong><br>
+          طواف الإفاضة. ابدأ من الحجر الأسود وامش مشيا عاديا (لا يوجد هرولة).
+        </div>
+        
+        <div class="alert-slate mb-2">
+          <strong>الشوط الأول:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+        </div>
+        ${makeCounterHTML({ key: "if_ifadah_1", title: "تأكيد الشوط الأول", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الثاني:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+        </div>
+        ${makeCounterHTML({ key: "if_ifadah_2", title: "تأكيد الشوط الثاني", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الثالث:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+        </div>
+        ${makeCounterHTML({ key: "if_ifadah_3", title: "تأكيد الشوط الثالث", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الرابع:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+        </div>
+        ${makeCounterHTML({ key: "if_ifadah_4", title: "تأكيد الشوط الرابع", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الخامس:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+        </div>
+        ${makeCounterHTML({ key: "if_ifadah_5", title: "تأكيد الشوط الخامس", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط السادس:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+        </div>
+        ${makeCounterHTML({ key: "if_ifadah_6", title: "تأكيد الشوط السادس", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط السابع:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركن اليماني والحجر الأسود قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+        </div>
+        ${makeCounterHTML({ key: "if_ifadah_7", title: "تأكيد الشوط السابع", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3">
+          <strong>بعد الطواف:</strong> صل ركعتين خلف المقام.
+        </div>
+
+        <div class="alert-green mt-3">
+          <strong>السعي:</strong><br>
+          بما أنك أتممت السعي بعد طواف القدوم في البداية فلا تسع مرة أخرى. (أما إذا لم تكن قد سعيت، فاسع الآن ٧ أشواط بنفس طريقة سعيك الأول).
+        </div>
+        <div class="alert-slate mt-3">
+          <strong>التحلل الأكبر:</strong> الآن حلال لك كل شيء حتى زوجتك. عد إلى منى للمبيت.
+        </div>
+      `
+    },
+    {
+      id: "if-8",
+      badge: "أيام التشريق",
+      title: "١١ و ١٢ و ١٣: رمي الجمرات الثلاث",
+      scene: "jamarat",
+      html: `
+        <div class="alert-slate mb-3">
+          <strong>الموعد:</strong> الرمي يبدأ بعد أذان الظهر في كل يوم من أيام التشريق.
+        </div>
+        <div class="alert-green mb-3">
+          <strong>الترتيب اليومي (ارمي كل جمرة بـ ٧ حصيات وكبر مع كل حصاة):</strong><br>
+          ١. الجمرة الصغرى: ارمها ثم تنح وادع طويلا.<br>
+          ٢. الجمرة الوسطى: ارمها ثم تنح وادع طويلا.<br>
+          ٣. جمرة العقبة الكبرى: ارمها وانصرف فورا دون دعاء.
+        </div>
+        ${makeCounterHTML({ key: "if_day11", title: "اليوم ١١: إجمالي الحصيات", count: 21, say: "الله أكبر" })}
+        ${makeCounterHTML({ key: "if_day12", title: "اليوم ١٢: إجمالي الحصيات", count: 21, say: "الله أكبر" })}
+        <div class="alert-slate mt-3">
+          <strong>التعجل:</strong> يمكنك الخروج من منى قبل غروب شمس يوم ١٢. إذا بقيت لليوم ١٣ فارم الجمرات الثلاث مرة أخرى.
+        </div>
+        ${makeCounterHTML({ key: "if_day13", title: "اليوم ١٣ (لغير المتعجل)", count: 21, say: "الله أكبر" })}
+      `
+    },
+    {
+      id: "if-9",
+      badge: "الختام",
+      title: "طواف الوداع (الرحيل)",
+      scene: "kaaba",
+      html: `
+        <div class="alert-green mb-3">
+          <strong>قبل مغادرة مكة مباشرة:</strong><br>
+          طواف الوداع. ابدأ من الحجر الأسود وامش مشيا عاديا.
+        </div>
+        
+        <div class="alert-slate mb-2">
+          <strong>الشوط الأول:</strong> أشر للحجر الأسود وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً...".
+        </div>
+        ${makeCounterHTML({ key: "if_wadaa_1", title: "تأكيد الشوط الأول", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الثاني:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+        </div>
+        ${makeCounterHTML({ key: "if_wadaa_2", title: "تأكيد الشوط الثاني", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الثالث:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+        </div>
+        ${makeCounterHTML({ key: "if_wadaa_3", title: "تأكيد الشوط الثالث", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الرابع:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+        </div>
+        ${makeCounterHTML({ key: "if_wadaa_4", title: "تأكيد الشوط الرابع", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط الخامس:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+        </div>
+        ${makeCounterHTML({ key: "if_wadaa_5", title: "تأكيد الشوط الخامس", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط السادس:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+        </div>
+        ${makeCounterHTML({ key: "if_wadaa_6", title: "تأكيد الشوط السادس", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3 mb-2">
+          <strong>الشوط السابع:</strong> أشر للحجر وقل: "بسم الله، والله أكبر". بين الركنين قل: "رَبَّنَا آتِنَا...".
+        </div>
+        ${makeCounterHTML({ key: "if_wadaa_7", title: "تأكيد الشوط السابع", count: 1, say: "بسم الله والله أكبر" })}
+
+        <div class="alert-slate mt-3">
+          <strong>بعد الطواف:</strong> صل ركعتين وانطلق في حفظ الله. (يسقط الطواف عن الحائض والنفساء).
+        </div>
+      `
     },
     appendixManhurat, appendixWomen, appendixChecklist, appendixNums, appendixDuas
   ];
-}
+  }
 
 /* =========================================================
    العرض + التنقل + العدّادات + السايدبار
